@@ -290,7 +290,7 @@ char* parse_cell_auxilary(char* cell, int is_list){
             strcat(ret_str, item);
             
             if (item_enty!=lst_len-1) {
-                strcat(ret_str, ",");
+                strcat(ret_str, ", ");
             }
             item_enty += 1;
             total_lapsed_length += static_var_size(0);

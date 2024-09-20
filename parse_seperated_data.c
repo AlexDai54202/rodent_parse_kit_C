@@ -153,7 +153,7 @@ int main(int argc, char **argv)
 
 int is_tabular(FILE *filepointer)
 {
-    char chunk[2048];
+    char chunk[2048 * 16];
     int commas = 0;
     int cur_commas = 0;
     fgets(chunk, sizeof(chunk), filepointer);
@@ -180,6 +180,7 @@ int is_tabular(FILE *filepointer)
         // printf("Commas: %d, Cur commas: %d\n", commas, cur_commas);
         if (cur_commas != commas)
         {
+            printf("Line: %d, Commas: %d, Current Commas: %d\n", numlines, commas, cur_commas);
             return 0;
         }
         cur_commas = 0;
@@ -191,7 +192,7 @@ int is_tabular(FILE *filepointer)
 
 char **full_parse(FILE *filepointer)
 {
-    char line[2048];                                              // define line max length
+    char line[2048 * 16];                                         // define line max length
     char *col_name_line = fgets(line, sizeof(line), filepointer); // get first column
     col_name_line[strlen(col_name_line) - 1] = '\0';              // remove the newline character.
     // printf("Column line: %s\n", col_name_line);                       // get column names column
